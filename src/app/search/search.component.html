@@ -1,0 +1,13 @@
+<form>
+  <label for="endpoint">Select an Area to Search</label>
+  <select [(ngModel)]="searchCriteria.endpoint" name="endpoint">
+    <option value="people" selected="yes">People</option>
+    <option value="starships" >Ships</option>
+    <option value="films" >Films</option>
+  </select>
+
+  <label for="q">Enter Search Query</label>
+  <input [(ngModel)]="searchCriteria.q" type="text" name="q" size="20">
+
+<button type="button" (click)="searchSubmit()">Search</button>
+</form>
