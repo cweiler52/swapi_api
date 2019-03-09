@@ -11,3 +11,8 @@
 
 <button type="button" (click)="searchSubmit()">Search</button>
 </form>
+
+
+<div *ngIf="people.length !== 0; else noPeople">
+  <app-people [people]="people"></app-people>
+</div>

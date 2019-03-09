@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-//import { People } from './models/people.model';
-import { DataService } from '../../services/data.service';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-people',
@@ -8,17 +6,10 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./people.component.css']
 })
 export class PeopleComponent implements OnInit {
-  people = []
+  @Input() people: any;
 
-  constructor(private dataService: DataService) { }
+  constructor() { }
 
   ngOnInit() {
-    // this.getPeople()
   }
-
-  getPeople(): void {
-    this.dataService.getPeople()
-      .subscribe(data => { this.people = data.results });
-  }
-
 }

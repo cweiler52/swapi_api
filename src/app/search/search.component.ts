@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
+import { PeopleComponent } from '../people/people.component';
 
 @Component({
   selector: 'app-search',
@@ -8,6 +9,10 @@ import { DataService } from '../services/data.service';
 })
 export class SearchComponent implements OnInit {
   searchCriteria = {}
+  people = [];
+  ships = [];
+  films = [];
+
   constructor(private dbService: DataService) { }
 
   ngOnInit() {
@@ -16,9 +21,6 @@ export class SearchComponent implements OnInit {
   searchSubmit() {
     //console.log(this.searchCriteria)
     this.dbService.search(this.searchCriteria)
-      .subscribe(
-        res => console.log(res),
-        err => console.log(err)
-      )
+      .subscribe(data => this.people = data.results)
   }
 }
