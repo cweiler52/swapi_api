@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 //import { People } from './models/people.model';
-import { DataService } from '../data.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-people',
@@ -13,7 +13,7 @@ export class PeopleComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.getPeople()
+    // this.getPeople()
   }
 
   getPeople(): void {
