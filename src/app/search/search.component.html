@@ -1,18 +1,27 @@
-<form>
-  <label for="endpoint">Select an Area to Search</label>
-  <select [(ngModel)]="searchCriteria.endpoint" name="endpoint">
-    <option value="people" selected="yes">People</option>
-    <option value="starships" >Ships</option>
-    <option value="films" >Films</option>
-  </select>
+<div style="text-align:center">
+  <form>
+    <label for="endpoint">Select an Area to Search</label>
+    <select [(ngModel)]="searchCriteria.endpoint" name="endpoint">
+      <option value="people" selected="yes">People</option>
+      <option value="starships" >Ships</option>
+      <option value="films" >Films</option>
+    </select>
 
-  <label for="q">Enter Search Query</label>
-  <input [(ngModel)]="searchCriteria.q" type="text" name="q" size="20">
+    <label for="q">Enter Search Query</label>
+    <input [(ngModel)]="searchCriteria.q" type="text" name="q" size="20">
 
-<button type="button" (click)="searchSubmit()">Search</button>
-</form>
-
+  <button type="button" (click)="searchSubmit()">Search</button>
+  </form>
+</div>
 
 <div *ngIf="people.length !== 0; else noPeople">
   <app-people [people]="people"></app-people>
+</div>
+
+<div *ngIf="ships.length !== 0; else noShips">
+  <app-ships [ships]="ships"></app-ships>
+</div>
+
+<div *ngIf="films.length !== 0; else noFilms">
+  <app-films [films]="films"></app-films>
 </div>

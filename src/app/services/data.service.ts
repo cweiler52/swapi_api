@@ -17,9 +17,9 @@ const httpOptions = {
 })
 export class DataService {
   private swapiBaseUrl      = 'https://swapi.co/api';
-  private swapiPeopleUrl    = 'https://swapi.co/api/people/';
-  private swapiFilmsUrl     = 'https://swapi.co/api/films/';
-  private swapiStarshipsUrl = 'https://swapi.co/api/starships/';
+  private swapiPeopleUrl    = 'https://swapi.co/api/people';
+  private swapiFilmsUrl     = 'https://swapi.co/api/films';
+  private swapiStarshipsUrl = 'https://swapi.co/api/starships';
 
   constructor(private http: HttpClient) { }
 
@@ -29,8 +29,8 @@ export class DataService {
   }
 
 
-  getPeople(): Observable<People[]> {
-    return this.http.get<People[]>(this.swapiPeopleUrl, httpOptions)
+  getPeople(id): Observable<People[]> {
+    return this.http.get<People[]>(`${this.swapiPeopleUrl}/${id}`, httpOptions)
   }
   
   getFilms(): Observable<Films[]> {
