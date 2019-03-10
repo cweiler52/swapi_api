@@ -1,16 +1,18 @@
-<ul *ngFor="let person of people">
-  <li>{{ person.name }}</li>
-  <li>{{ person.height }}</li>
-  <li>{{ person.mass }}</li> 
-  <li>{{ person.hair_color }}</li> 
-  <li>{{ person.skin_color }}</li> 
-  <li>{{ person.eye_color }}</li> 
-  <li>{{ person.birth_year }}</li> 
-  <li>{{ person.gender }}</li> 
-  <li>{{ person.homeworld }}</li> 
-  <li>{{ person.films }}</li>
-  <li>{{ person.species }}</li>
-  <li>{{ person.vehicles }}</li>
-  <li>{{ person.starships }}</li>
-  <li>{{ person.url }}</li>
+<ul class="main_list" *ngFor="let person of people">
+  <li><div class="info_label">Name:</div>{{ person.name }}</li>
+  <li><div class="info_label">Height:</div>{{ person.height }}</li>
+  <li><div class="info_label">Mass:</div>{{ person.mass }}</li> 
+  <li><div class="info_label">Hair Color:</div>{{ person.hair_color }}</li> 
+  <li><div class="info_label">Skin Color:</div>{{ person.skin_color }}</li> 
+  <li><div class="info_label">Eye Color:</div>{{ person.eye_color }}</li> 
+  <li><div class="info_label">Birth Year:</div>{{ person.birth_year }}</li> 
+  <li><div class="info_label">Gender:</div>{{ person.gender }}</li> 
+  <li *ngIf="person.films.length; else noFilms"><div class="fontweight_700">Films:</div></li>
+  <ul *ngFor="let film_title of person.films">
+    <li>{{ film_title }}</li>
+  </ul>
+  <li *ngIf="person.starships.length; else noShips"><div class="fontweight_700">Starships:</div></li>
+  <ul *ngFor="let ship_name of person.starships">
+    <li>{{ ship_name }}</li>
+  </ul>
 </ul>

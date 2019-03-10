@@ -33,11 +33,11 @@ export class DataService {
     return this.http.get<People[]>(`${this.swapiPeopleUrl}/${id}`, httpOptions)
   }
   
-  getFilms(): Observable<Films[]> {
-    return this.http.get<Films[]>(this.swapiFilmsUrl, httpOptions)
+  getFilm(id): Observable<Films[]> {
+    return this.http.get<Films[]>(`${this.swapiFilmsUrl}/${id}`, httpOptions)
   }  
   
-  getStarships(): Observable<Starships[]> {
-    return this.http.get<Starships[]>(this.swapiStarshipsUrl, httpOptions)
+  getStarship(id): Observable<Starships[]> {
+    return this.http.get<Starships[]>(`${this.swapiStarshipsUrl}/${id}`, httpOptions)
   }
 }

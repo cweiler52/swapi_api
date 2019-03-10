@@ -1,14 +1,16 @@
-<p *ngFor="let film of films">
-    {{ film.title }}<br>
-    {{ film.episode_id }}<br>
-    {{ film.opening_crawl }}<br> 
-    {{ film.director }}<br> 
-    {{ film.producer }}<br> 
-    {{ film.release_date }}<br> 
-    {{ film.characters }}<br> 
-    {{ film.planets }}<br> 
-    {{ film.starships }}<br> 
-    {{ film.vehicles }}<br>
-    {{ film.species }}<br>
-    {{ film.url }}
-  </p>
+<ul *ngFor="let film of films">
+  <li>{{ film.title }}</li>
+  <li>{{ film.episode_id }}</li>
+  <li>{{ film.opening_crawl }}</li> 
+  <li>{{ film.director }}</li> 
+  <li>{{ film.producer }}</li> 
+  <li>{{ film.release_date }}</li> 
+  <li *ngIf="film.characters.length; else noCharacters">Pilots: </li>
+    <ul *ngFor="let character_name of film.characters">
+      <li>{{ character_name }}</li>
+    </ul>
+  <li *ngIf="film.starships.length; else noShips">Starships: </li>
+  <ul *ngFor="let ship_name of film.starships">
+    <li>{{ ship_name }}</li>
+  </ul> 
+  </ul>

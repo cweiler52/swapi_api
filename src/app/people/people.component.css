@@ -1,0 +1,13 @@
+.info_label {
+    width: 10vw;
+    font-weight: 700;
+    float: left;
+}
+.fontweight_700 {
+    font-weight: 700;
+}
+
+.main_list {
+    list-style-type: none;
+    line-height: 2.5vh;
+}

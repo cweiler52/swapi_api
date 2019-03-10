@@ -15,13 +15,16 @@
 </div>
 
 <div *ngIf="people.length !== 0; else noPeople">
+  Charactor Details
   <app-people [people]="people"></app-people>
 </div>
 
 <div *ngIf="ships.length !== 0; else noShips">
+  Starship Details
   <app-ships [ships]="ships"></app-ships>
 </div>
 
 <div *ngIf="films.length !== 0; else noFilms">
+Film Details 
   <app-films [films]="films"></app-films>
 </div>

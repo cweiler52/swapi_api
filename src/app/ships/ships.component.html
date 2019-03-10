@@ -1,17 +1,22 @@
-<p *ngFor="let ship of ships">
-    {{ ship.name }}<br>
-    {{ ship.model }}<br>
-    {{ ship.manufacturer }}<br> 
-    {{ ship.cost_in_credits }}<br> 
-    {{ ship.max_atmosphering_speed }}<br> 
-    {{ ship.crew }}<br> 
-    {{ ship.passengers }}<br> 
-    {{ ship.cargo_capacity }}<br> 
-    {{ ship.consumables }}<br> 
-    {{ ship.hyperdrive_rating }}<br>
-    {{ ship.MGLT }}<br>
-    {{ ship.starship_class }}<br>
-    {{ ship.pilots }}<br>
-    {{ ship.films }}<br>
-    {{ ship.url }}
-  </p>
+<ul *ngFor="let ship of ships">
+    <li>{{ ship.name }}</li>
+    <li>{{ ship.model }}</li>
+    <li>{{ ship.manufacturer }}</li> 
+    <li>{{ ship.cost_in_credits }}</li> 
+    <li>{{ ship.max_atmosphering_speed }}</li> 
+    <li>{{ ship.crew }}</li> 
+    <li>{{ ship.passengers }}</li> 
+    <li>{{ ship.cargo_capacity }}</li> 
+    <li>{{ ship.consumables }}</li> 
+    <li>{{ ship.hyperdrive_rating }}</li>
+    <li>{{ ship.MGLT }}</li>
+    <li>{{ ship.starship_class }}</li>
+    <li *ngIf="ship.pilots.length; else noPilots">Pilots: </li>
+    <ul *ngFor="let pilot_name of ship.pilots">
+      <li>{{ pilot_name }}</li>
+    </ul>
+    <li *ngIf="ship.films.length; else noFilms">Films: </li>
+    <ul *ngFor="let film_title of ship.films">
+      <li>{{ film_title }}</li>
+    </ul>
+  </ul>
