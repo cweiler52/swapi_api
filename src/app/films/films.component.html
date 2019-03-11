@@ -1,16 +1,23 @@
-<ul *ngFor="let film of films">
-  <li>{{ film.title }}</li>
-  <li>{{ film.episode_id }}</li>
-  <li>{{ film.opening_crawl }}</li> 
-  <li>{{ film.director }}</li> 
-  <li>{{ film.producer }}</li> 
-  <li>{{ film.release_date }}</li> 
-  <li *ngIf="film.characters.length; else noCharacters">Pilots: </li>
-    <ul *ngFor="let character_name of film.characters">
-      <li>{{ character_name }}</li>
-    </ul>
-  <li *ngIf="film.starships.length; else noShips">Starships: </li>
-  <ul *ngFor="let ship_name of film.starships">
-    <li>{{ ship_name }}</li>
-  </ul> 
-  </ul>
+<h2>Film Search Results</h2>
+<div class="deck" *ngFor="let film of films">
+    <div class="card">
+        <div class="cardContainer">
+          <ul class="main_list">
+            <li><div class="info_label">Title:</div>{{ film.title }}</li>
+            <li><div class="info_label">Episode ID:</div>{{ film.episode_id }}</li>
+            <li><div class="info_label">Opening Crawl</div>{{ film.opening_crawl }}</li> 
+            <li><div class="info_label">Director</div>{{ film.director }}</li> 
+            <li><div class="info_label">Producer</div>{{ film.producer }}</li> 
+            <li><div class="info_label">Release Date:</div>{{ film.release_date }}</li> 
+            <li *ngIf="film.characters.length"><div class="fontweight_700">Pilots:</div></li>
+              <ul *ngFor="let character_name of film.characters">
+                <li class="solid_li">{{ character_name }}</li>
+              </ul>
+            <li *ngIf="film.starships.length"><div class="fontweight_700">Starships:</div></li>
+              <ul *ngFor="let ship_name of film.starships">
+                <li class="solid_li">{{ ship_name }}</li>
+              </ul> 
+          </ul>
+      </div>
+    </div>
+</div>

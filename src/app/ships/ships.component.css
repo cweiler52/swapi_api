@@ -1,0 +1,51 @@
+.info_label {
+    width: 20vw;
+    font-weight: 700;
+    float: left;
+    color: #000;
+}
+.fontweight_700 {
+    font-weight: 700;
+    color: #000;
+}
+
+.main_list {
+    list-style-type: none;
+    line-height: 3vh;
+}
+.solid_li {
+    list-style-type: disc;
+}
+
+.deck {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+h2 {
+    color: #333;
+}
+
+.card {
+    width: 49vw;
+    background: #333;
+    box-shadow: 0 0.5em 1em rgba(255,255,255, 0.2);
+    transition: 0.3s;
+    border: 1px solid #C8D7E3;
+    color: #C8D7E3;
+}
+.card:hover {
+    background-color: rgba(47, 78, 111, 0.9);
+}
+
+.cardContainer {
+    padding: 1em 2em;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+}
+
+.cardContainer .card {
+    flex: 1;
+}

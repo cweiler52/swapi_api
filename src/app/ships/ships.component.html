@@ -1,22 +1,29 @@
-<ul *ngFor="let ship of ships">
-    <li>{{ ship.name }}</li>
-    <li>{{ ship.model }}</li>
-    <li>{{ ship.manufacturer }}</li> 
-    <li>{{ ship.cost_in_credits }}</li> 
-    <li>{{ ship.max_atmosphering_speed }}</li> 
-    <li>{{ ship.crew }}</li> 
-    <li>{{ ship.passengers }}</li> 
-    <li>{{ ship.cargo_capacity }}</li> 
-    <li>{{ ship.consumables }}</li> 
-    <li>{{ ship.hyperdrive_rating }}</li>
-    <li>{{ ship.MGLT }}</li>
-    <li>{{ ship.starship_class }}</li>
-    <li *ngIf="ship.pilots.length; else noPilots">Pilots: </li>
-    <ul *ngFor="let pilot_name of ship.pilots">
-      <li>{{ pilot_name }}</li>
-    </ul>
-    <li *ngIf="ship.films.length; else noFilms">Films: </li>
-    <ul *ngFor="let film_title of ship.films">
-      <li>{{ film_title }}</li>
-    </ul>
-  </ul>
+<h2>Starship Search Results</h2>
+<div class="deck" *ngFor="let ship of ships">
+    <div class="card">
+        <div class="cardContainer">
+          <ul class="main_list">
+              <li><div class="info_label">Name:</div>{{ ship.name }}</li>
+              <li><div class="info_label">Model:</div>{{ ship.model }}</li>
+              <li><div class="info_label">Manufacturer:</div>{{ ship.manufacturer }}</li> 
+              <li><div class="info_label">Cost In Credits:</div>{{ ship.cost_in_credits }}</li> 
+              <li><div class="info_label">Max Atmosphering Speed:</div>{{ ship.max_atmosphering_speed }}</li> 
+              <li><div class="info_label">Crew:</div>{{ ship.crew }}</li> 
+              <li><div class="info_label">Passengers:</div>{{ ship.passengers }}</li> 
+              <li><div class="info_label">Cargo Capacity:</div>{{ ship.cargo_capacity }}</li> 
+              <li><div class="info_label">Consumables:</div>{{ ship.consumables }}</li> 
+              <li><div class="info_label">Hyperdrive Rating:</div>{{ ship.hyperdrive_rating }}</li>
+              <li><div class="info_label">MGLT:</div>{{ ship.MGLT }}</li>
+              <li><div class="info_label">Starship Class:</div>{{ ship.starship_class }}</li>
+              <li *ngIf="ship.pilots.length"><div class="fontweight_700">Pilots:</div></li>
+              <ul *ngFor="let pilot_name of ship.pilots">
+                <li class="solid_li">{{ pilot_name }}</li>
+              </ul>
+              <li *ngIf="ship.films.length"><div class="fontweight_700">Films:</div></li>
+              <ul *ngFor="let film_title of ship.films">
+                <li class="solid_li">{{ film_title }}</li>
+              </ul>
+          </ul>
+        </div>
+      </div>
+  </div>          

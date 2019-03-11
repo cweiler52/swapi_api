@@ -1,30 +1,25 @@
-<div style="text-align:center">
+<div class="search_bar">
   <form>
-    <label for="endpoint">Select an Area to Search</label>
-    <select [(ngModel)]="searchCriteria.endpoint" name="endpoint">
-      <option value="people" selected="yes">People</option>
-      <option value="starships" >Ships</option>
-      <option value="films" >Films</option>
+    <label class="search_label" for="q">Enter Your Search Query:</label>
+    <input [(ngModel)]="searchCriteria.q" type="text" name="q" size="40" class="search_field">
+    <select class="search_label search_select" name="endpoint" [(ngModel)]="searchCriteria.endpoint" (ngModelChange)="searchSubmit($event)">
+      <option value="">Select A Category</option>
+      <option *ngFor="let o of searchOptions" [value]="o.value">{{ o.option }}</option>
     </select>
-
-    <label for="q">Enter Search Query</label>
-    <input [(ngModel)]="searchCriteria.q" type="text" name="q" size="20">
-
-  <button type="button" (click)="searchSubmit()">Search</button>
   </form>
 </div>
 
-<div *ngIf="people.length !== 0; else noPeople">
-  Charactor Details
+<div *ngIf="people.length">
   <app-people [people]="people"></app-people>
 </div>
+<div class="vis" *ngIf="!people.length && searchButton && searchCriteria.endpoint === people">No People To List</div>
 
-<div *ngIf="ships.length !== 0; else noShips">
-  Starship Details
+<div *ngIf="ships.length">
   <app-ships [ships]="ships"></app-ships>
 </div>
+<div class="vis" *ngIf="!ships.length && searchButton && searchCriteria.endpoint === starships">No Starships To List</div>
 
-<div *ngIf="films.length !== 0; else noFilms">
-Film Details 
+<div *ngIf="films.length">
   <app-films [films]="films"></app-films>
 </div>
+<div class="vis" *ngIf="!films.length && searchButton && searchCriteria.endpoint === films">No Films To List</div>

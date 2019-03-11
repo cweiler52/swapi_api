@@ -1,0 +1,16 @@
+.main_intro {
+    text-align: center;
+    padding: 2em 0 1em 0;
+    color: #C8D7E3;
+}
+
+.swapi {
+    font-size: 6em;
+    display: block;
+    letter-spacing: .05em;
+}
+.long_swapi {
+    display: block;
+    font-size: 2.25em;
+    letter-spacing: .2em;
+}

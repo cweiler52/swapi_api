@@ -1,0 +1,22 @@
+.search_bar {
+    width: 100vw;
+    margin: 1em 0 2em 0;
+    text-align: center;
+    color: #C8D7E3;
+    background-color: #000;
+}
+
+.search_label {
+    margin: 1em;
+}
+
+.search_field {
+    padding: 0.3em;
+}
+.search_select {
+    font-size: 0.75em;
+}
+
+.vis {
+    color: #333;
+}

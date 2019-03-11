@@ -3,6 +3,7 @@ import { DataService } from '../services/data.service';
 import { PeopleComponent } from '../people/people.component';
 import { ShipsComponent } from '../ships/ships.component';
 import { FilmsComponent } from '../films/films.component';
+import { Cat } from '../models/category.model';
 
 @Component({
   selector: 'app-search',
@@ -11,7 +12,9 @@ import { FilmsComponent } from '../films/films.component';
 })
 export class SearchComponent implements OnInit {
   // SEARCH CRITERIA
+  searchButton: boolean;
   searchCriteria = {};
+  searchOptions: Cat[];
   // OVERALL DATA
   people = [];
   ships = [];
@@ -29,21 +32,31 @@ export class SearchComponent implements OnInit {
   constructor(private dbService: DataService) { }
 
   ngOnInit() {
+    this.searchOptions = [
+      { option: 'People', value: 'people' },
+      { option: 'Ships', value: 'starships' }, 
+      { option: 'Films', value: 'films' }
+    ]
+    this.searchCriteria.endpoint = '';
+    this.searchButton = false;
   }
 
   searchSubmit() {
-    //console.log(this.searchCriteria)
+    // console.log(this.searchCriteria)
+    this.searchButton = true;
     this.people = [];
     this.ships = [];
     this.films = [];
-    
+
     switch(this.searchCriteria.endpoint) {
       case 'people':
         this.dbService.search(this.searchCriteria).subscribe(
           data => { 
             for(let info of data.results) {
+              this.p_films = [];
+              this.p_starships = [];
               // RESET FILMS TO SHOW A LIST OF JUST THE TITLES FOR THE PERSON SEARCHED
-              // console.log(data.results[0]);
+              //console.log(data.results[0]);
               for(let film_url of info.films) {
                 let id = film_url.substr(0, film_url.length-1).split('/').reverse().shift();
                 // console.log(id);
@@ -74,7 +87,7 @@ export class SearchComponent implements OnInit {
       
       case 'starships':
         this.dbService.search(this.searchCriteria).subscribe(
-          data => { 
+          data => {
             for(let info of data.results) {
               // RESET PILOTS TO SHOW A LIST OF JUST THE NAMES FOR THE STARSHIP SEARCHED
               for(let pilot_url of info.pilots) {
@@ -87,7 +100,7 @@ export class SearchComponent implements OnInit {
                   })
               }
               info.pilots = this.s_pilots;
-              
+              this.s_pilots = [];
               // RESET FILMS TO SHOW A LIST OF JUST THE TITLES FOR THE STARSHIP SEARCHED
               // console.log(data.results[0]);            
               for(let film_url of info.films) {
@@ -100,6 +113,7 @@ export class SearchComponent implements OnInit {
                   })
               }
               info.films = this.s_films;
+              this.s_films = [];
             }
             this.ships = data.results;
           }
@@ -110,6 +124,8 @@ export class SearchComponent implements OnInit {
         this.dbService.search(this.searchCriteria).subscribe(
           data => { 
             for(let info of data.results) {
+              this.f_characters = [];
+              this.f_starships = [];
               // RESET CHARACTORS TO SHOW A LIST OF JUST THE NAMES FOR THE FILM SEARCHED
               for(let character_url of info.characters) {
                 let id = character_url.substr(0, character_url.length-1).split('/').reverse().shift();
@@ -139,6 +155,7 @@ export class SearchComponent implements OnInit {
           }
         )
       break;
-    }    
+    } 
+    this.searchCriteria.endpoint = '';   
   }
 }
