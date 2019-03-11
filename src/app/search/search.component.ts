@@ -53,32 +53,25 @@ export class SearchComponent implements OnInit {
         this.dbService.search(this.searchCriteria).subscribe(
           data => { 
             for(let info of data.results) {
-              this.p_films = [];
-              this.p_starships = [];
               // RESET FILMS TO SHOW A LIST OF JUST THE TITLES FOR THE PERSON SEARCHED
-              //console.log(data.results[0]);
-              for(let film_url of info.films) {
+              this.p_films = info.films;
+              info.films = [];
+              for(let film_url of this.p_films) {
                 let id = film_url.substr(0, film_url.length-1).split('/').reverse().shift();
-                // console.log(id);
                 this.dbService.getFilm(id).subscribe(
-                  film => { 
-                    // console.log(film);
-                    this.p_films.push(film.title);
-                  })
+                  film => { info.films.push(film.title) }
+                )
               }
-              info.films = this.p_films;
 
               // RESET STARSHIPS TO SHOW A LIST OF JUST THE NAMES FOR THE PERSON SEARCHED
-              for(let ship_url of info.starships) {
+              this.p_starships = info.starships;
+              info.starships = [];
+              for(let ship_url of this.p_starships) {
                 let id = ship_url.substr(0, ship_url.length-1).split('/').reverse().shift();
-                // console.log(id);
                 this.dbService.getStarship(id).subscribe(
-                  ship => { 
-                    // console.log(ship);
-                    this.p_starships.push(ship.name);
-                  })
+                  ship => { info.starships.push(ship.name) }
+                )
               }
-              info.starships = this.p_starships;
             }
             this.people = data.results;
           }
@@ -90,30 +83,27 @@ export class SearchComponent implements OnInit {
           data => {
             for(let info of data.results) {
               // RESET PILOTS TO SHOW A LIST OF JUST THE NAMES FOR THE STARSHIP SEARCHED
-              for(let pilot_url of info.pilots) {
+              this.s_pilots = info.pilots;
+              info.pilots = [];
+              for(let pilot_url of this.s_pilots) {
                 let id = pilot_url.substr(0, pilot_url.length-1).split('/').reverse().shift();
-                // console.log(id);
                 this.dbService.getStarship(id).subscribe(
-                  pilot => { 
-                    // console.log(pilot);
-                    this.s_pilots.push(pilot.name);
-                  })
+                  pilot => { info.pilots.push(pilot.name) }
+                )
               }
-              info.pilots = this.s_pilots;
-              this.s_pilots = [];
+              //console.log('pilots', info.pilots)
+
               // RESET FILMS TO SHOW A LIST OF JUST THE TITLES FOR THE STARSHIP SEARCHED
-              // console.log(data.results[0]);            
-              for(let film_url of info.films) {
+              let fcnt = 0;
+              this.s_films = info.films;
+              info.films = [];
+              for(let film_url of this.s_films) {
                 let id = film_url.substr(0, film_url.length-1).split('/').reverse().shift();
-                // console.log(id);
                 this.dbService.getFilm(id).subscribe(
-                  film => { 
-                    // console.log(film);
-                    this.s_films.push(film.title);
-                  })
+                  film => { info.films.push(film.title) }
+                )
               }
-              info.films = this.s_films;
-              this.s_films = [];
+              //console.log('films', info.films)
             }
             this.ships = data.results;
           }
@@ -124,32 +114,25 @@ export class SearchComponent implements OnInit {
         this.dbService.search(this.searchCriteria).subscribe(
           data => { 
             for(let info of data.results) {
-              this.f_characters = [];
-              this.f_starships = [];
               // RESET CHARACTORS TO SHOW A LIST OF JUST THE NAMES FOR THE FILM SEARCHED
-              for(let character_url of info.characters) {
+              this.f_characters = info.characters;
+              info.characters = [];
+              for(let character_url of this.f_characters) {
                 let id = character_url.substr(0, character_url.length-1).split('/').reverse().shift();
-                // console.log(id);
                 this.dbService.getPeople(id).subscribe(
-                  character => { 
-                    // console.log(character);
-                    this.f_characters.push(character.name);
-                  })
+                  character => { info.characters.push(character.name) }
+                )
               }
-              info.characters = this.f_characters;
               
               // RESET STARSHIPS TO SHOW A LIST OF JUST THE NAMES FOR THE FILM SEARCHED
-              // console.log(data.results[0]);            
-              for(let ship_url of info.starships) {
+              this.f_starships = info.starships;
+              info.starships = [];
+              for(let ship_url of this.f_starships) {
                 let id = ship_url.substr(0, ship_url.length-1).split('/').reverse().shift();
-                // console.log(id);
                 this.dbService.getStarship(id).subscribe(
-                  starship => { 
-                    // console.log(starship);
-                    this.f_starships.push(starship.name);
-                  })
+                  starship => { info.starships.push(starship.name) }
+                )
               }
-              info.starships = this.f_starships;
             }
             this.films = data.results;
           }

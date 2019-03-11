@@ -5,9 +5,9 @@
           <ul class="main_list">
             <li><div class="info_label">Title:</div>{{ film.title }}</li>
             <li><div class="info_label">Episode ID:</div>{{ film.episode_id }}</li>
-            <li><div class="info_label">Opening Crawl</div>{{ film.opening_crawl }}</li> 
-            <li><div class="info_label">Director</div>{{ film.director }}</li> 
-            <li><div class="info_label">Producer</div>{{ film.producer }}</li> 
+            <li><div class="info_label">Opening Crawl:</div>{{ film.opening_crawl }}</li> 
+            <li><div class="info_label">Director:</div>{{ film.director }}</li> 
+            <li><div class="info_label">Producer:</div>{{ film.producer }}</li> 
             <li><div class="info_label">Release Date:</div>{{ film.release_date }}</li> 
             <li *ngIf="film.characters.length"><div class="fontweight_700">Pilots:</div></li>
               <ul *ngFor="let character_name of film.characters">
